@@ -9,7 +9,7 @@ with open(budget_data) as budgetfile:
     header = next(reader)
     data = [row for row in reader]
     totalmonths = len(data)
-    print(totalmonths)
+    
     proflos = []
     suma = 0
     for row in data:
@@ -18,7 +18,30 @@ with open(budget_data) as budgetfile:
     for i in proflos:
         suma = suma + i
     
-    print(suma)
 
-  
+    changes = []
+    n=0
+   
+    for i in proflos:
+        n = n+1
+        if n == 86:
+             n = 0
+        a = i - proflos[n]
+        changes.append(a)
+        
+    changes.pop()
+    
+    totalchanges = 0
+    for y in changes:
+        totalchanges = totalchanges + y
 
+    average = totalchanges/85  
+    
+    changes.insert(0, int(0))
+    
+    Alldata = zip(data,changes)
+
+    print(Alldata)
+        
+    
+    
